@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { downloadElementAsImage } from "../utils/download";
 
 type Image = {
@@ -33,7 +33,7 @@ export default function CardEditor({
       <div
         id="card"
         ref={cardRef}
-        className="mx-auto aspect-[4/5] w-80 sm:w-96 relative rounded-lg overflow-hidden shadow-lg"
+        className="mx-auto aspect-4/5 w-80 sm:w-96 relative rounded-lg overflow-hidden shadow-lg "
         style={{
           backgroundImage: `url(${image.urls.regular})`,
           backgroundSize: "cover",
@@ -59,7 +59,7 @@ export default function CardEditor({
         <input
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="p-2 border rounded"
+          className="p-2 border rounded ring-pink-400 focus:ring-2 outline-none"
           placeholder="Enter your name"
         />
 
@@ -67,12 +67,18 @@ export default function CardEditor({
           <select
             value={fontFamily}
             onChange={(e) => setFontFamily(e.target.value)}
-            className="p-2 border rounded"
+            className="p-2 border hover:border-none rounded  ring-pink-400 focus:ring-2 outline-none"
           >
             <option value="Inter, system-ui">Inter (default)</option>
             <option value="Georgia, serif">Georgia</option>
             <option value="'Brush Script MT', cursive">Brush Script</option>
             <option value="'Courier New', monospace">Courier</option>
+            <option value="'Times New Roman', serif">Times New Roman</option>
+            <option value="'Comic Sans MS', cursive">Comic Sans</option>
+            <option value="'Poppins', sans-serif">Poppins</option>
+            <option value="'Roboto', sans-serif">Roboto</option>
+            <option value="'Playfair Display', serif">Playfair Display</option>
+            <option value="'Lobster', cursive">Lobster</option>
           </select>
 
           <input
@@ -89,7 +95,7 @@ export default function CardEditor({
                 `thank-you-${name || "card"}.png`
               )
             }
-            className="px-4 py-2 bg-blue-600 text-white rounded"
+            className="px-4 py-2 bg-pink-400 text-white rounded"
           >
             Download
           </button>

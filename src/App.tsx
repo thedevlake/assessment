@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getRandomImages, searchImages } from "./api/unsplash";
 import ImageGrid from "./components/ImageGrid";
 import CardEditor from "./components/CardEditor";
@@ -59,15 +59,15 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-100 via-white to-gray-200 p-6 flex items-center justify-center">
-      <div className="w-full max-w-6xl backdrop-blur-lg bg-white/40 shadow-xl border border-white/30 rounded-3xl p-8">
-        <header className="mb-8 flex flex-wrap items-center justify-between">
-          <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600 drop-shadow-sm">
+    <div className="min-h-screen bg-linear-to-br from-pink-100 via-white to-pink-200 p-6 flex items-center justify-center">
+      <div className="w-full max-w-6xl backdrop-blur-lg bg-white/40 shadow-xl border border-white/30 py-12  px-8">
+        <header className="mb-8 flex flex-wrap items-center justify-between gap-3">
+          <h1 className="text-3xl text-center font-bold bg-clip-text text-transparent border bg-linear-to-r from-pink-600 to-purple-200 drop-shadow-sm">
             Thank You Card Generator
           </h1>
           <button
             onClick={handleRefresh}
-            className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/30 border border-white/40 backdrop-blur-md text-gray-700 hover:bg-white/60 transition shadow-sm hover:shadow-md"
+            className="mx-auto sm:mx-0 flex items-center gap-2 px-4 py-2 rounded-full bg-white/30 border border-white/40 backdrop-blur-md text-gray-700 hover:bg-white/60 transition shadow-sm hover:shadow-md"
           >
             <RefreshCw size={18} className={loading ? "animate-spin" : ""} />
             Refresh
@@ -87,7 +87,7 @@ export default function App() {
         <main className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           <section className="bg-white/30 rounded-2xl p-6 backdrop-blur-md border border-white/40 shadow-inner">
             <h2 className="mb-4 font-semibold text-lg text-gray-700">
-              Pick an Image
+              Choose an Image
             </h2>
             {loading ? (
               <div className="p-6 text-center text-gray-500 italic">
@@ -118,8 +118,8 @@ export default function App() {
             )}
           </section>
 
-          <aside className="bg-white/30 rounded-2xl p-6 backdrop-blur-md border border-white/40 shadow-inner">
-            <h2 className="mb-4 font-semibold text-lg text-gray-700">
+          <aside className=" grid grid-cols-1 place-items-center p-6">
+            <h2 className="mb-4 font-semibold text-lg text-gray-700 text-center">
               Customize Your Card
             </h2>
             {selected ? (
