@@ -59,8 +59,8 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-pink-100 via-white to-pink-200 p-6 flex items-center justify-center">
-      <div className="w-full max-w-6xl backdrop-blur-lg bg-white/40 shadow-xl border border-white/30 py-12  px-8">
+    <div className="min-h-screen bg-linear-to-br from-pink-100 via-white to-pink-200 flex items-center justify-center">
+      <div className="w-full max-w-6xl backdrop-blur-lg bg-white/40 shadow-xl border border-red-500 py-12  px-20">
         <header className="mb-8 flex flex-wrap items-center justify-between gap-3">
           <h1 className="text-3xl text-center font-bold bg-clip-text text-transparent border bg-linear-to-r from-pink-600 to-purple-200 drop-shadow-sm">
             Thank You Card Generator
