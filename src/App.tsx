@@ -4,6 +4,7 @@ import ImageGrid from "./components/ImageGrid";
 import CardEditor from "./components/CardEditor";
 import SearchBar from "./components/SearchBar";
 import { RefreshCw } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function App() {
   const [images, setImages] = useState<any[]>([]);
@@ -59,7 +60,12 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-pink-100 via-white to-pink-200 flex items-center justify-center">
+    <motion.div
+      className="min-h-screen bg-gradient-to-br from-pink-100 via-white to-pink-200 flex items-center justify-center"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
       <div className="w-full max-w-6xl backdrop-blur-lg bg-white/40 shadow-xl sm:border sm:border-white/45 py-12  px-20">
         <header className="mb-8 flex flex-wrap items-center justify-between gap-3">
           <h1 className="text-3xl text-center font-bold bg-clip-text text-transparent border bg-linear-to-r from-pink-600 to-purple-200 drop-shadow-sm">
@@ -67,7 +73,7 @@ export default function App() {
           </h1>
           <button
             onClick={handleRefresh}
-            className="mx-auto sm:mx-0 flex items-center gap-2 px-4 py-2 rounded-full bg-white/30 border border-white/40 backdrop-blur-md text-gray-700 hover:bg-white/60 transition shadow-sm hover:shadow-md"
+            className="mx-auto sm:mx-0 flex items-center gap-2 px-4 py-2 rounded-full bg-white/30 border border-white/40 backdrop-blur-md text-gray-700 hover:bg-white/60 transition-all duration-300 hover:scale-105 hover:shadow-lg"
           >
             <RefreshCw size={18} className={loading ? "animate-spin" : ""} />
             Refresh
@@ -85,13 +91,22 @@ export default function App() {
         </div>
 
         <main className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-          <section className="bg-white/30 rounded-2xl p-6 backdrop-blur-md border border-white/40 shadow-inner">
-            <h2 className="mb-4 font-semibold text-lg text-gray-700">
+          <motion.section
+            className="bg-white/30 rounded-2xl sm:p-6 sm:backdrop-blur-md sm:border sm:border-white/40 sm:shadow-inner my-auto px-0"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+          >
+            <h2 className="mb-4 font-semibold text-lg text-gray-700 text-center">
               Choose an Image
             </h2>
             {loading ? (
-              <div className="p-6 text-center text-gray-500 italic">
-                Loading beautiful images...
+              <div className="p-6 text-center text-gray-500 italic flex justify-center items-center hover:border-amber-300 hover:border-4">
+                <motion.div
+                  className="w-8 h-8 border-4 border-t-pink-500 border-white rounded-full animate-spin"
+                  aria-label="Loading spinner"
+                />
+                <span className="ml-3">Loading beautiful images...</span>
               </div>
             ) : (
               <ImageGrid images={images} onSelect={(img) => setSelected(img)} />
@@ -116,9 +131,14 @@ export default function App() {
                 </button>
               </div>
             )}
-          </section>
+          </motion.section>
 
-          <aside className=" grid grid-cols-1 place-items-center p-6">
+          <motion.aside
+            className=" grid grid-cols-1 place-items-center p-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+          >
             <h2 className="mb-4 font-semibold text-lg text-gray-700 text-center">
               Customize Your Card
             </h2>
@@ -137,9 +157,9 @@ export default function App() {
                 Select an image to start designing your thank-you card ✨
               </div>
             )}
-          </aside>
+          </motion.aside>
         </main>
       </div>
-    </div>
+    </motion.div>
   );
 }

@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 type Image = {
   id: string;
   urls: { small: string; regular: string };
@@ -11,19 +13,21 @@ type Props = {
 
 export default function ImageGrid({ images, onSelect }: Props) {
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+    <div className="grid grid-cols-2 sm:grid-cols-4 gap-5 ">
       {images.map((img) => (
-        <button
+        <motion.button
           key={img.id}
           onClick={() => onSelect(img)}
-          className="rounded overflow-hidden"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.97 }}
+          className="relative rounded-xl  hover:shadow-2xl transition overflow-hidden border-4 border-transparent hover:border-pink-300 backdrop-blur-sm"
         >
           <img
             src={img.urls.small}
             alt={img.alt_description ?? "img"}
-            className="w-full h-40 object-cover"
+            className="w-full h-40 object-cover transition-transform duration-500 hover:scale-110"
           />
-        </button>
+        </motion.button>
       ))}
     </div>
   );
